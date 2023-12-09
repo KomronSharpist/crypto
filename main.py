@@ -503,8 +503,8 @@ async def handle_message(message: types.Message):
             await crypto_check(message)
         if user_message == "Asosiy kanalimiz 💬":
             await asosiy_channels_service(message)
-        if user_message == "Eslatmalar ❕":
-            await eslatmalar_service(message)
+        if user_message == "Kursimiz haqida ❕":
+            await kursimiz_haqida_service(message)
         if user_message == "Trading darsliklar 📹":
             await trading_darsliklar_service(message)
         if user_message == "VIPKANAL  Haqida 💎":
@@ -713,7 +713,7 @@ async def get_list_by_code(message: types.Message, code):
 
 async def asosiy_channels_service(message: types.Message):
     await get_list_by_code(message,"1")
-async def eslatmalar_service(message: types.Message):
+async def kursimiz_haqida_service(message: types.Message):
     await get_list_by_code(message,"2")
 async def trading_darsliklar_service(message: types.Message):
     await get_list_by_code(message,"3")
@@ -806,7 +806,7 @@ async def admin_sessions_service(message: types.Message):
         kb = [
             [
                 types.KeyboardButton(text="Asosiy kanalimiz 💬"),
-                types.KeyboardButton(text="Eslatmalar ❕")
+                types.KeyboardButton(text="Kursimiz haqida ❕")
             ],
             [
                 types.KeyboardButton(text="Trading darsliklar 📹"),
