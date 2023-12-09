@@ -144,13 +144,17 @@ async def cmd_start(message: types.Message):
         del data_control_session[user_id]
     if user_id in admin_add_session:
         del admin_add_session[user_id]
+    if user_id in admin_sessions:
+        del admin_sessions[user_id]
+    if user_id in owner_sessions:
+        del owner_sessions[user_id]
 
     if user_id in chanel_control_session:
         del chanel_control_session[user_id]
     if user_id in chanel_add_session:
         del chanel_add_session[user_id]
 
-    if user_id not in admin_sessions:
+    if user_id not in admin_userIds or user_id not in ownerId:
         for channel_username in channel_usernames:
             if await is_subscribed(user_id, channel_username):
                 continue
