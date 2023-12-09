@@ -1,4 +1,5 @@
 import asyncio
+import html
 import json
 import logging
 import re
@@ -11,7 +12,8 @@ from aiogram import Bot, types
 import time
 
 logging.basicConfig(level=logging.INFO)
-bot = Bot(token="6738630567:AAFQp5cPNqyxCQA3FhAgmSnB1PBGbJFus8I")
+bot = Bot(token="6762166632:AAEF27qp1ekUDNdNi2v9yX2TbUozs21HzD8")
+# bot = Bot(token="6738630567:AAFQp5cPNqyxCQA3FhAgmSnB1PBGbJFus8I")
 dp = Dispatcher()
 crypto_list = {'ICX': 'HALOL', 'UTK': 'HALOL', 'KEY': 'HALOL', 'APE': 'HALOL', 'ATOM': 'HALOL', 'CELR': 'HALOL', 'DENT': 'HALOL', 'RSR': 'HALOL', 'RIF': 'HALOL', 'WAVES': 'HALOL', 'ONE': 'HALOL', 'PERL': 'HALOL', 'PHA': 'HALOL', 'RAD': 'HALOL', 'CFX': 'HALOL', 'SOL': 'HALOL', 'LIT': 'HALOL', 'XTZ': 'HALOL', 'ETH': 'HALOL', 'POND': 'HALOL', 'FTM': 'HALOL', 'BTC': 'HALOL', 'CELO': 'HALOL', 'LRC': 'HALOL', 'ROSE': 'HALOL', 'TRB': 'HALOL', 'FLUX': 'HALOL', 'REQ': 'HALOL', 'ETC': 'HALOL', 'DOGE': 'HALOL', 'IOST': 'HALOL', 'ENS': 'HALOL', 'AVAX': 'HALOL', 'MINA': 'HALOL', 'MATIC': 'HALOL', 'OP': 'HALOL', 'SKL': 'HALOL', 'FET': 'HALOL', 'ADA': 'HALOL', 'HOT': 'HALOL', 'ACH': 'HALOL', 'BAT': 'HALOL', 'MOVR': 'HALOL', 'CTK': 'HALOL', 'VET': 'HALOL', 'STX': 'HALOL', 'KSM': 'HALOL', 'ICP': 'HALOL', 'THETA': 'HALOL', 'DOT': 'HALOL', 'BLZ': 'HALOL', 'IRIS': 'HALOL', 'AR': 'HALOL', 'PHB': 'HALOL', 'DGB': 'HALOL', 'APT': 'HALOL', 'XEM': 'HALOL', 'ZEC': 'HALOL', 'ANT': 'HALOL', 'GLMR': 'HALOL', 'MANA': 'HALOL', 'MASK': 'HALOL', 'TOMO': 'HALOL', 'LTO': 'HALOL', 'AGIX': 'HALOL', 'DATA': 'HALOL', 'JASMY': 'HALOL', 'KLAY': 'HALOL', 'BCH': 'HALOL', 'FIL': 'HALOL', 'LINK': 'HALOL', 'FIO': 'HALOL', 'LPT': 'HALOL', 'RVN': 'HALOL', 'CTXC': 'HALOL', 'IOTA': 'HALOL', 'STORJ': 'HALOL', 'GTC': 'HALOL', 'AVA': 'HALOL', 'MDT': 'HALOL', 'NEAR': 'HALOL', 'VIDT': 'HALOL', 'CHR': 'HALOL', 'FLOW': 'HALOL', 'SYS': 'HALOL', 'COS': 'HALOL', 'DASH': 'HALOL', 'NULS': 'HALOL', 'TRX': 'HALOL', 'TWT': 'HALOL', 'LTC': 'HALOL', 'QTUM': 'HALOL', 'CTSI': 'HALOL', 'GRT': 'HALOL', 'SCRT': 'HALOL', 'DUSK': 'HALOL', 'EOS': 'HALOL', 'DCR': 'HALOL', 'OXT': 'HALOL', 'NKN': 'HALOL', 'GMT': 'HALOL', 'WTC': 'HALOL', 'ARPA': 'HALOL', 'HBAR': 'HALOL', 'PUNDIX': 'HALOL', 'TFUEL': 'HALOL', 'SXP': 'HALOL', 'XMR': 'HALOL', 'ALGO': 'HALOL', 'BICO': 'HALOL', 'CKB': 'HALOL', 'SFP': 'HALOL', 'TVK': 'HALOL', 'PAXG': 'HALOL', 'OMG': 'HALOL', 'ARDR': 'HALOL', 'POWR': 'HALOL', 'ATA': 'HALOL', 'DREP': 'HALOL', 'XLM': 'HALOL', 'XEC': 'HALOL', 'GAS': 'HALOL', 'FIRO': 'HALOL', 'LOOM': 'HALOL', 'QKC': 'HALOL', 'RARE': 'HALOL', 'CHZ': 'HALOL', 'ONG': 'HALOL', 'PROM': 'HALOL', 'XRP': 'HALOL', 'GLM': 'HALOL', 'RLC': 'HALOL', 'VTHO': 'HALOL', 'DOCK': 'HALOL', 'HIVE': 'HALOL', 'AMP': 'HALOL', 'BAND': 'HALOL', 'ZIL': 'HALOL', 'STMX': 'HALOL', 'MTL': 'HALOL', 'KMD': 'HALOL', 'ABBC': 'HALOL', 'ADX': 'HALOL', 'AERGO': 'HALOL', 'AIOZ': 'HALOL', 'AKT': 'HALOL', 'ALEPH': 'HALOL', 'ALT': 'HALOL', 'AOG': 'HALOL', 'APL': 'HALOL', 'ARRR': 'HALOL', 'AURORA': 'HALOL', 'BFC': 'HALOL', 'BLUR': 'HALOL', 'BUSD': 'HALOL', 'CARD': 'HALOL', 'CERE': 'HALOL', 'CQT': 'HALOL', 'CRPT': 'HALOL', 'CSPR': 'HALOL', 'DAG': 'HALOL', 'DERO': 'HALOL', 'DFA': 'HALOL', 'DIVI': 'HALOL', 'DPR': 'HALOL', 'DVPN': 'HALOL', 'EDG': 'HALOL', 'EGLD': 'HALOL', 'EWT': 'HALOL', 'GOM2': 'HALOL', 'GRIN': 'HALOL', 'GST': 'HALOL', 'HAI': 'HALOL', 'HAPI': 'HALOL', 'HNT': 'HALOL', 'HTR': 'HALOL', 'HYDRA': 'HALOL', 'IOTX': 'HALOL', 'KAI': 'HALOL', 'KDA': 'HALOL', 'KLV': 'HALOL', 'KOK': 'HALOL', 'KRL': 'HALOL', 'LITH': 'HALOL', 'LOCUS': 'HALOL', 'LYXE': 'HALOL', 'MAP': 'HALOL', 'METIS': 'HALOL', 'MITX': 'HALOL', 'MLK': 'HALOL', 'MNW': 'HALOL', 'MOOV': 'HALOL', 'MXC': 'HALOL', 'NIM': 'HALOL', 'NOIA': 'HALOL', 'NWC': 'HALOL', 'ORAI': 'HALOL', 'ORBS': 'HALOL', 'ORC': 'HALOL', 'PLU': 'HALOL', 'PRE': 'HALOL', 'PRQ': 'HALOL', 'PUSH': 'HALOL', 'QNT': 'HALOL', 'REAP': 'HALOL', 'REV.3L': 'HALOL', 'RLY': 'HALOL', 'RMRK': 'HALOL', 'RNDR': 'HALOL', 'SHR': 'HALOL', 'SOLVE': 'HALOL', 'SOUL': 'HALOL', 'STC': 'HALOL', 'STRAX': 'HALOL', 'SUTER': 'HALOL', 'SWASH': 'HALOL', 'SYLO': 'HALOL', 'TEL': 'HALOL', 'TIME': 'HALOL', 'TLOS': 'HALOL', 'TONE': 'HALOL', 'TON': 'HALOL', 'TRAC': 'HALOL', 'TRIAS': 'HALOL', 'USDC': 'HALOL', 'USDP': 'HALOL', 'VID': 'HALOL', 'VLX': 'HALOL', 'VRA': 'HALOL', 'VSYS': 'HALOL', 'WHALE': 'HALOL', 'WOM': 'HALOL', 'XCH': 'HALOL', 'XCN': 'HALOL', 'XDC': 'HALOL', 'XNO': 'HALOL', 'XPR': 'HALOL', 'XYM': 'HALOL', 'XYO': 'HALOL', 'ZEN': 'HALOL', 'AQT': 'HALOL', 'ARA': 'HALOL', 'ARK': 'HALOL', 'ARV': 'HALOL', 'BEAM': 'HALOL', 'BLY': 'HALOL', 'BORA': 'HALOL', 'BSV': 'HALOL', 'BTM': 'HALOL', 'CRT': 'HALOL', 'DKA': 'HALOL', 'DMD': 'HALOL', 'DORA': 'HALOL', 'ELF': 'HALOL', 'EL': 'HALOL', 'HC': 'HALOL', 'HERO': 'HALOL', 'HEZ': 'HALOL', 'HIBS': 'HALOL', 'ICHI': 'HALOL', 'IQ': 'HALOL', 'KIN': 'HALOL', 'LN': 'HALOL', 'MAPS': 'HALOL', 'MATH': 'HALOL', 'META': 'HALOL', 'MLT': 'HALOL', 'MSB': 'HALOL', 'MTA': 'HALOL', 'MVL': 'HALOL', 'NAS': 'HALOL', 'NAV': 'HALOL', 'NEBL': 'HALOL', 'NEST': 'HALOL', 'PAC': 'HALOL', 'PNK': 'HALOL', 'RAE': 'HALOL', 'RARI': 'HALOL', 'RAZOR': 'HALOL', 'SAFE': 'HALOL', 'SBR': 'HALOL', 'SC': 'HALOL', 'SDN': 'HALOL', 'SERO': 'HALOL', 'SNT': 'HALOL', 'STARS': 'HALOL', 'STEEM': 'HALOL', 'TMTG': 'HALOL', 'TORN': 'HALOL', 'TPT': 'HALOL', 'TUSD': 'HALOL', 'UPI': 'HALOL', '': 'HALOL', 'WNT': 'HALOL', 'XAUT': 'HALOL', 'XEP': 'HALOL', 'XPX': 'HALOL', 'XVG': 'HALOL', 'ZIG': 'HALOL', 'APM': 'HALOL', 'BCD': 'HALOL', 'CVC': 'HALOL', 'INT': 'HALOL', 'LSK': 'HALOL', 'MITH': 'HALOL'}
 chanel_add_session = {}
@@ -168,21 +170,21 @@ async def cmd_start(message: types.Message):
             builder.add(types.InlineKeyboardButton(text=f"Tekshirish ✅", callback_data="checkSubscription"))
             builder.adjust(1, 1)
             await message.answer(
-                "• Botdan foydalanish uchun avval kanalga obuna bo’ling va <b>Tekshirish</b> tugmasini bosing! \n\n @TexnoAI - sun'iy intellektlar va texnologiyalar haqida eng so'nggi yangiliklarni berib boruvchi kanal",
+                "• Botdan foydalanish uchun avval kanalga obuna bo’ling va <b>Tekshirish</b> tugmasini bosing! ",
                 reply_markup=builder.as_markup(), parse_mode="HTML")
             return
     kb = [
         [
             types.KeyboardButton(text="Asosiy kanalimiz 💬"),
-            types.KeyboardButton(text="Eslatmalar ❕")
+            types.KeyboardButton(text="Kursimiz haqida ❕")
         ],
         [
             types.KeyboardButton(text="Trading darsliklar 📹"),
-            types.KeyboardButton(text="VIP Haqida 💎")
+            types.KeyboardButton(text="VIPKANAL  Haqida 💎")
         ],
-        [types.KeyboardButton(text="Trading haqida qisqa videolar 📹")],
-        [types.KeyboardButton(text="Savdo trading ortidan baraka topish sabablari 📌")],
-        [types.KeyboardButton(text="Halol koinlar ☪️")],
+        [types.KeyboardButton(text="Bepul skalping signallar 📈")],
+        [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
+        [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
     await message.answer("<b>Salom! 👋</b>\n\nO'zingizga kerakli bo'limni tanlgan!\n\n<b>Buyruqlar:</b>\n/start - botni qayta ishga tushirish;", reply_markup=keyboard, parse_mode="HTML")
@@ -477,21 +479,21 @@ async def handle_message(message: types.Message):
             kb = [
                 [
                     types.KeyboardButton(text="Asosiy kanalimiz 💬"),
-                    types.KeyboardButton(text="Eslatmalar ❕")
+                    types.KeyboardButton(text="Kursimiz haqida ❕")
                 ],
                 [
                     types.KeyboardButton(text="Trading darsliklar 📹"),
-                    types.KeyboardButton(text="VIP Haqida 💎")
+                    types.KeyboardButton(text="VIPKANAL  Haqida 💎")
                 ],
-                [types.KeyboardButton(text="Trading haqida qisqa videolar 📹")],
-                [types.KeyboardButton(text="Savdo trading ortidan baraka topish sabablari 📌")],
-                [types.KeyboardButton(text="Halol koinlar ☪️")],
+                [types.KeyboardButton(text="Bepul skalping signallar 📈")],
+                [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
+                [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
             ]
             keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
             await message.answer(
                 "<b>Salom! 👋</b>\n\nO'zingizga kerakli bo'limni tanlgan!\n\n<b>Buyruqlar:</b>\n/start - botni qayta ishga tushirish;",
                 reply_markup=keyboard, parse_mode="HTML")
-        if user_message == "Halol koinlar ☪️":
+        if user_message == "Coinlar hukmini aniqlash ☪️":
             crypto_check_session[user_id] = True
             kb = [
                 [types.KeyboardButton(text="Menyuga qaytish 🔙")],
@@ -506,11 +508,11 @@ async def handle_message(message: types.Message):
             await eslatmalar_service(message)
         if user_message == "Trading darsliklar 📹":
             await trading_darsliklar_service(message)
-        if user_message == "VIP Haqida 💎":
+        if user_message == "VIPKANAL  Haqida 💎":
             await vip_haqida_service(message)
-        if user_message == "Trading haqida qisqa videolar 📹":
+        if user_message == "Bepul skalping signallar 📈":
             await trading_haqida_qisqa_vidyolar_service(message)
-        if user_message == "Savdo trading ortidan baraka topish sabablari 📌":
+        if user_message == "Trading ortidan baraka topish 💵":
             await savdo_trading_baraka_service(message)
 async def crypto_check(message: types.Message):
     user_message = message.text.lower()
@@ -691,7 +693,8 @@ async def get_list_by_code(message: types.Message, code):
         if matching_entries:
             for entry in matching_entries:
                 file_id = entry.get('media_file')
-                caption = entry.get('caption')
+                raw_caption = entry.get('caption')
+                caption = json.loads(f'"{raw_caption}"')
 
                 if entry['media_type'] == 'photo':
                     await bot.send_photo(chat_id=message.from_user.id, photo=file_id, caption=caption,
@@ -769,7 +772,7 @@ async def admin_sessions_service(message: types.Message):
             reply_markup=keyboard)
     if user_message == "Malumot turlari 🔀":
         await message.answer(
-            "1. Asosiy kanal.\n2. Eslatmalar.\n3. Trading darsliklar.\n4. VIP Haqida.\n5. Trading haqida qisqa videolar.\n6. Savdo trading ortidan baraka topish sabablari.")
+            "1. Asosiy kanal.\n2. Kursimiz haqida\n3. Trading darsliklar.\n4. VIPKANAL  Haqida.\n5. Bepul skalping signallar\n6.  Trading ortidan baraka topish")
     if user_message == "Statistika 📊":
         await message.answer(f"📊 Jami a'zolar soni: {len(all_users)}\n"
                              f"📈 Aktiv a'zolar soni: {len(active_users)}\n"
@@ -803,11 +806,11 @@ async def admin_sessions_service(message: types.Message):
             ],
             [
                 types.KeyboardButton(text="Trading darsliklar 📹"),
-                types.KeyboardButton(text="VIP Haqida 💎")
+                types.KeyboardButton(text="VIPKANAL  Haqida 💎")
             ],
-            [types.KeyboardButton(text="Trading haqida qisqa videolar 📹")],
-            [types.KeyboardButton(text="Savdo trading ortidan baraka topish sabablari 📌")],
-            [types.KeyboardButton(text="Halol koinlar ☪️")],
+            [types.KeyboardButton(text="Bepul skalping signallar 📈")],
+            [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
+            [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
         ]
         keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
         await message.answer(
