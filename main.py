@@ -1,5 +1,4 @@
 import asyncio
-import html
 import json
 import logging
 import re
@@ -675,6 +674,10 @@ async def delete_data_by_code(message: types.Message):
         await bot.send_message(message.from_user.id, "Hozircha hech qanday filmlar yo'q❗️")
         del data_delete_session[message.from_user.id]
 
+
+def decode_emojis(text):
+    return emoji.demojize(text)
+
 async def get_list_by_code(message: types.Message, code):
     json_filename = 'data.json'
     try:
@@ -693,8 +696,9 @@ async def get_list_by_code(message: types.Message, code):
         if matching_entries:
             for entry in matching_entries:
                 file_id = entry.get('media_file')
-                raw_caption = entry.get('caption')
-                caption = json.loads(f'"{raw_caption}"')
+                raw_caption = entry.get('caption').replace('\\n', '\n')
+
+                caption = raw_caption.encode('utf-8').decode('unicode-escape')
 
                 if entry['media_type'] == 'photo':
                     await bot.send_photo(chat_id=message.from_user.id, photo=file_id, caption=caption,
