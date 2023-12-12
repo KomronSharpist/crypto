@@ -554,12 +554,12 @@ async def handle_message(message: types.Message):
             if len(user_referals.get(user_id, [])) >= 10:
                 await trading_haqida_qisqa_vidyolar_service(message)
             else:
-                referral_link = f'https://t.me/sharpist_bot?start={user_id}'
+                referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
                 await message.answer(f"Bu bo'limni ochish uchun siz 10 do'stingizni taklif qilishingiz kerak!\n\nSizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
         if user_message == "Trading ortidan baraka topish 💵":
             await savdo_trading_baraka_service(message)
         if user_message == "Do'st taklif qilish ➕":
-            referral_link = f'https://t.me/sharpist_bot?start={user_id}'
+            referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
             await message.answer(f"Sizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
         if user_message == "Taklif qilingan do'stlar 📈":
             await message.answer(f"Siz taklif qilgan do'stlar soni: {len(user_referals.get(user_id, []))}")
