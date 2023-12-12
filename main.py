@@ -11,7 +11,7 @@ from aiogram import Bot, types
 import time
 
 logging.basicConfig(level=logging.INFO)
-# bot = Bot(token="6762166632:AAEF27qp1ekUDNdNi2v9yX2TbUozs21HzD8")
+# bot = Bot(token="5804242862:AAGRkQXyTMnVpEwojt13Cjr4v-zm6MRwa6g") # test
 bot = Bot(token="6738630567:AAFQp5cPNqyxCQA3FhAgmSnB1PBGbJFus8I")
 dp = Dispatcher()
 crypto_list = {'ICX': 'HALOL', 'UTK': 'HALOL', 'KEY': 'HALOL', 'APE': 'HALOL', 'ATOM': 'HALOL', 'CELR': 'HALOL', 'DENT': 'HALOL', 'RSR': 'HALOL', 'RIF': 'HALOL', 'WAVES': 'HALOL', 'ONE': 'HALOL', 'PERL': 'HALOL', 'PHA': 'HALOL', 'RAD': 'HALOL', 'CFX': 'HALOL', 'SOL': 'HALOL', 'LIT': 'HALOL', 'XTZ': 'HALOL', 'ETH': 'HALOL', 'POND': 'HALOL', 'FTM': 'HALOL', 'BTC': 'HALOL', 'CELO': 'HALOL', 'LRC': 'HALOL', 'ROSE': 'HALOL', 'TRB': 'HALOL', 'FLUX': 'HALOL', 'REQ': 'HALOL', 'ETC': 'HALOL', 'DOGE': 'HALOL', 'IOST': 'HALOL', 'ENS': 'HALOL', 'AVAX': 'HALOL', 'MINA': 'HALOL', 'MATIC': 'HALOL', 'OP': 'HALOL', 'SKL': 'HALOL', 'FET': 'HALOL', 'ADA': 'HALOL', 'HOT': 'HALOL', 'ACH': 'HALOL', 'BAT': 'HALOL', 'MOVR': 'HALOL', 'CTK': 'HALOL', 'VET': 'HALOL', 'STX': 'HALOL', 'KSM': 'HALOL', 'ICP': 'HALOL', 'THETA': 'HALOL', 'DOT': 'HALOL', 'BLZ': 'HALOL', 'IRIS': 'HALOL', 'AR': 'HALOL', 'PHB': 'HALOL', 'DGB': 'HALOL', 'APT': 'HALOL', 'XEM': 'HALOL', 'ZEC': 'HALOL', 'ANT': 'HALOL', 'GLMR': 'HALOL', 'MANA': 'HALOL', 'MASK': 'HALOL', 'TOMO': 'HALOL', 'LTO': 'HALOL', 'AGIX': 'HALOL', 'DATA': 'HALOL', 'JASMY': 'HALOL', 'KLAY': 'HALOL', 'BCH': 'HALOL', 'FIL': 'HALOL', 'LINK': 'HALOL', 'FIO': 'HALOL', 'LPT': 'HALOL', 'RVN': 'HALOL', 'CTXC': 'HALOL', 'IOTA': 'HALOL', 'STORJ': 'HALOL', 'GTC': 'HALOL', 'AVA': 'HALOL', 'MDT': 'HALOL', 'NEAR': 'HALOL', 'VIDT': 'HALOL', 'CHR': 'HALOL', 'FLOW': 'HALOL', 'SYS': 'HALOL', 'COS': 'HALOL', 'DASH': 'HALOL', 'NULS': 'HALOL', 'TRX': 'HALOL', 'TWT': 'HALOL', 'LTC': 'HALOL', 'QTUM': 'HALOL', 'CTSI': 'HALOL', 'GRT': 'HALOL', 'SCRT': 'HALOL', 'DUSK': 'HALOL', 'EOS': 'HALOL', 'DCR': 'HALOL', 'OXT': 'HALOL', 'NKN': 'HALOL', 'GMT': 'HALOL', 'WTC': 'HALOL', 'ARPA': 'HALOL', 'HBAR': 'HALOL', 'PUNDIX': 'HALOL', 'TFUEL': 'HALOL', 'SXP': 'HALOL', 'XMR': 'HALOL', 'ALGO': 'HALOL', 'BICO': 'HALOL', 'CKB': 'HALOL', 'SFP': 'HALOL', 'TVK': 'HALOL', 'PAXG': 'HALOL', 'OMG': 'HALOL', 'ARDR': 'HALOL', 'POWR': 'HALOL', 'ATA': 'HALOL', 'DREP': 'HALOL', 'XLM': 'HALOL', 'XEC': 'HALOL', 'GAS': 'HALOL', 'FIRO': 'HALOL', 'LOOM': 'HALOL', 'QKC': 'HALOL', 'RARE': 'HALOL', 'CHZ': 'HALOL', 'ONG': 'HALOL', 'PROM': 'HALOL', 'XRP': 'HALOL', 'GLM': 'HALOL', 'RLC': 'HALOL', 'VTHO': 'HALOL', 'DOCK': 'HALOL', 'HIVE': 'HALOL', 'AMP': 'HALOL', 'BAND': 'HALOL', 'ZIL': 'HALOL', 'STMX': 'HALOL', 'MTL': 'HALOL', 'KMD': 'HALOL', 'ABBC': 'HALOL', 'ADX': 'HALOL', 'AERGO': 'HALOL', 'AIOZ': 'HALOL', 'AKT': 'HALOL', 'ALEPH': 'HALOL', 'ALT': 'HALOL', 'AOG': 'HALOL', 'APL': 'HALOL', 'ARRR': 'HALOL', 'AURORA': 'HALOL', 'BFC': 'HALOL', 'BLUR': 'HALOL', 'BUSD': 'HALOL', 'CARD': 'HALOL', 'CERE': 'HALOL', 'CQT': 'HALOL', 'CRPT': 'HALOL', 'CSPR': 'HALOL', 'DAG': 'HALOL', 'DERO': 'HALOL', 'DFA': 'HALOL', 'DIVI': 'HALOL', 'DPR': 'HALOL', 'DVPN': 'HALOL', 'EDG': 'HALOL', 'EGLD': 'HALOL', 'EWT': 'HALOL', 'GOM2': 'HALOL', 'GRIN': 'HALOL', 'GST': 'HALOL', 'HAI': 'HALOL', 'HAPI': 'HALOL', 'HNT': 'HALOL', 'HTR': 'HALOL', 'HYDRA': 'HALOL', 'IOTX': 'HALOL', 'KAI': 'HALOL', 'KDA': 'HALOL', 'KLV': 'HALOL', 'KOK': 'HALOL', 'KRL': 'HALOL', 'LITH': 'HALOL', 'LOCUS': 'HALOL', 'LYXE': 'HALOL', 'MAP': 'HALOL', 'METIS': 'HALOL', 'MITX': 'HALOL', 'MLK': 'HALOL', 'MNW': 'HALOL', 'MOOV': 'HALOL', 'MXC': 'HALOL', 'NIM': 'HALOL', 'NOIA': 'HALOL', 'NWC': 'HALOL', 'ORAI': 'HALOL', 'ORBS': 'HALOL', 'ORC': 'HALOL', 'PLU': 'HALOL', 'PRE': 'HALOL', 'PRQ': 'HALOL', 'PUSH': 'HALOL', 'QNT': 'HALOL', 'REAP': 'HALOL', 'REV.3L': 'HALOL', 'RLY': 'HALOL', 'RMRK': 'HALOL', 'RNDR': 'HALOL', 'SHR': 'HALOL', 'SOLVE': 'HALOL', 'SOUL': 'HALOL', 'STC': 'HALOL', 'STRAX': 'HALOL', 'SUTER': 'HALOL', 'SWASH': 'HALOL', 'SYLO': 'HALOL', 'TEL': 'HALOL', 'TIME': 'HALOL', 'TLOS': 'HALOL', 'TONE': 'HALOL', 'TON': 'HALOL', 'TRAC': 'HALOL', 'TRIAS': 'HALOL', 'USDC': 'HALOL', 'USDP': 'HALOL', 'VID': 'HALOL', 'VLX': 'HALOL', 'VRA': 'HALOL', 'VSYS': 'HALOL', 'WHALE': 'HALOL', 'WOM': 'HALOL', 'XCH': 'HALOL', 'XCN': 'HALOL', 'XDC': 'HALOL', 'XNO': 'HALOL', 'XPR': 'HALOL', 'XYM': 'HALOL', 'XYO': 'HALOL', 'ZEN': 'HALOL', 'AQT': 'HALOL', 'ARA': 'HALOL', 'ARK': 'HALOL', 'ARV': 'HALOL', 'BEAM': 'HALOL', 'BLY': 'HALOL', 'BORA': 'HALOL', 'BSV': 'HALOL', 'BTM': 'HALOL', 'CRT': 'HALOL', 'DKA': 'HALOL', 'DMD': 'HALOL', 'DORA': 'HALOL', 'ELF': 'HALOL', 'EL': 'HALOL', 'HC': 'HALOL', 'HERO': 'HALOL', 'HEZ': 'HALOL', 'HIBS': 'HALOL', 'ICHI': 'HALOL', 'IQ': 'HALOL', 'KIN': 'HALOL', 'LN': 'HALOL', 'MAPS': 'HALOL', 'MATH': 'HALOL', 'META': 'HALOL', 'MLT': 'HALOL', 'MSB': 'HALOL', 'MTA': 'HALOL', 'MVL': 'HALOL', 'NAS': 'HALOL', 'NAV': 'HALOL', 'NEBL': 'HALOL', 'NEST': 'HALOL', 'PAC': 'HALOL', 'PNK': 'HALOL', 'RAE': 'HALOL', 'RARI': 'HALOL', 'RAZOR': 'HALOL', 'SAFE': 'HALOL', 'SBR': 'HALOL', 'SC': 'HALOL', 'SDN': 'HALOL', 'SERO': 'HALOL', 'SNT': 'HALOL', 'STARS': 'HALOL', 'STEEM': 'HALOL', 'TMTG': 'HALOL', 'TORN': 'HALOL', 'TPT': 'HALOL', 'TUSD': 'HALOL', 'UPI': 'HALOL', '': 'HALOL', 'WNT': 'HALOL', 'XAUT': 'HALOL', 'XEP': 'HALOL', 'XPX': 'HALOL', 'XVG': 'HALOL', 'ZIG': 'HALOL', 'APM': 'HALOL', 'BCD': 'HALOL', 'CVC': 'HALOL', 'INT': 'HALOL', 'LSK': 'HALOL', 'MITH': 'HALOL'}
@@ -85,6 +85,12 @@ try:
 except FileNotFoundError:
     today_logined_users = []
 
+try:
+    with open('user_referals.json', 'r') as file:
+        user_referals = json.load(file)
+except FileNotFoundError:
+    user_referals = {}
+
 
 async def is_subscribed(user_id, channel_username):
     try:
@@ -126,6 +132,13 @@ def get_duplicates():
         else:
             seen.add(item)
     return list(duplicates)
+
+async def get_referred_user_id(payload):
+    try:
+        user_id = int(payload.split('=')[-1])
+        return user_id
+    except (ValueError, IndexError):
+        return None
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
@@ -181,11 +194,35 @@ async def cmd_start(message: types.Message):
             types.KeyboardButton(text="Trading darsliklar 📹"),
             types.KeyboardButton(text="VIPKANAL  Haqida 💎")
         ],
+        [
+            types.KeyboardButton(text="Do'st taklif qilish ➕"),
+            types.KeyboardButton(text="Taklif qilingan do'stlar 📈")
+        ],
         [types.KeyboardButton(text="Bepul skalping signallar 📈")],
         [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
         [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
     ]
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+    text = message.text
+    if text.startswith('/start '):
+        payload = text[len('/start '):]
+        referred_user_id = await get_referred_user_id(payload)
+        if referred_user_id != user_id:
+            if referred_user_id in user_referals:
+                if user_id not in user_referals[referred_user_id]:
+                    user_referals[referred_user_id].append(user_id)
+                    user_info = await bot.get_chat(user_id)
+                    username = user_info.username if user_info.username else user_info.first_name
+                    await bot.send_message(referred_user_id, f"Siz {username}ni taklif qildingiz ✅")
+            else:
+                user_referals[referred_user_id] = [user_id]
+                user_info = await bot.get_chat(user_id)
+                username = user_info.username if user_info.username else user_info.first_name
+                await bot.send_message(referred_user_id, f"Siz {username}ni taklif qildingiz ✅")
+            with open('user_referals.json', 'w') as file:
+                json.dump(user_referals, file)
+        else:
+            await message.answer("Notog'ri referal link.")
     await message.answer("<b>Salom! 👋</b>\n\nO'zingizga kerakli bo'limni tanlgan!\n\n<b>Buyruqlar:</b>\n/start - botni qayta ishga tushirish;", reply_markup=keyboard, parse_mode="HTML")
 
 @dp.message(Command("myid"))
@@ -484,6 +521,10 @@ async def handle_message(message: types.Message):
                     types.KeyboardButton(text="Trading darsliklar 📹"),
                     types.KeyboardButton(text="VIPKANAL  Haqida 💎")
                 ],
+                [
+                    types.KeyboardButton(text="Do'st taklif qilish ➕"),
+                    types.KeyboardButton(text="Taklif qilingan do'stlar 📈")
+                ],
                 [types.KeyboardButton(text="Bepul skalping signallar 📈")],
                 [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
                 [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
@@ -510,9 +551,20 @@ async def handle_message(message: types.Message):
         if user_message == "VIPKANAL  Haqida 💎":
             await vip_haqida_service(message)
         if user_message == "Bepul skalping signallar 📈":
-            await trading_haqida_qisqa_vidyolar_service(message)
+            if len(user_referals.get(user_id, [])) >= 10:
+                await trading_haqida_qisqa_vidyolar_service(message)
+            else:
+                referral_link = f'https://t.me/sharpist_bot?start={user_id}'
+                await message.answer(f"Bu bo'limni ochish uchun siz 10 do'stingizni taklif qilishingiz kerak!\n\nSizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
         if user_message == "Trading ortidan baraka topish 💵":
             await savdo_trading_baraka_service(message)
+        if user_message == "Do'st taklif qilish ➕":
+            referral_link = f'https://t.me/sharpist_bot?start={user_id}'
+            await message.answer(f"Sizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
+        if user_message == "Taklif qilingan do'stlar 📈":
+            await message.answer(f"Siz taklif qilgan do'stlar soni: {len(user_referals.get(user_id, []))}")
+
+
 async def crypto_check(message: types.Message):
     user_message = message.text.lower()
     crypto_name = next((crypto for crypto in crypto_list if crypto.lower() == user_message), None)
@@ -675,9 +727,6 @@ async def delete_data_by_code(message: types.Message):
         del data_delete_session[message.from_user.id]
 
 
-def decode_emojis(text):
-    return emoji.demojize(text)
-
 async def get_list_by_code(message: types.Message, code):
     json_filename = 'data.json'
     try:
@@ -812,6 +861,10 @@ async def admin_sessions_service(message: types.Message):
                 types.KeyboardButton(text="Trading darsliklar 📹"),
                 types.KeyboardButton(text="VIPKANAL  Haqida 💎")
             ],
+            [
+                types.KeyboardButton(text="Do'st taklif qilish ➕"),
+                types.KeyboardButton(text="Taklif qilingan do'stlar 📈")
+            ],
             [types.KeyboardButton(text="Bepul skalping signallar 📈")],
             [types.KeyboardButton(text="Trading ortidan baraka topish 💵")],
             [types.KeyboardButton(text="Coinlar hukmini aniqlash ☪️")],
@@ -820,7 +873,6 @@ async def admin_sessions_service(message: types.Message):
         await message.answer(
             "<b>Salom! 👋</b>\n\nO'zingizga kerakli bo'limni tanlgan!\n\n<b>Buyruqlar:</b>\n/start - botni qayta ishga tushirish;",
             reply_markup=keyboard, parse_mode="HTML")
-
 
 async def send_message_service(message: types.Message):
     global reklam
