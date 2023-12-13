@@ -11,8 +11,8 @@ from aiogram import Bot, types
 import time
 
 logging.basicConfig(level=logging.INFO)
-# bot = Bot(token="5804242862:AAGRkQXyTMnVpEwojt13Cjr4v-zm6MRwa6g") # test
-bot = Bot(token="6738630567:AAFQp5cPNqyxCQA3FhAgmSnB1PBGbJFus8I")
+bot = Bot(token="5804242862:AAGRkQXyTMnVpEwojt13Cjr4v-zm6MRwa6g") # test
+# bot = Bot(token="6738630567:AAFQp5cPNqyxCQA3FhAgmSnB1PBGbJFus8I")
 dp = Dispatcher()
 crypto_list = {'ICX': 'HALOL', 'UTK': 'HALOL', 'KEY': 'HALOL', 'APE': 'HALOL', 'ATOM': 'HALOL', 'CELR': 'HALOL', 'DENT': 'HALOL', 'RSR': 'HALOL', 'RIF': 'HALOL', 'WAVES': 'HALOL', 'ONE': 'HALOL', 'PERL': 'HALOL', 'PHA': 'HALOL', 'RAD': 'HALOL', 'CFX': 'HALOL', 'SOL': 'HALOL', 'LIT': 'HALOL', 'XTZ': 'HALOL', 'ETH': 'HALOL', 'POND': 'HALOL', 'FTM': 'HALOL', 'BTC': 'HALOL', 'CELO': 'HALOL', 'LRC': 'HALOL', 'ROSE': 'HALOL', 'TRB': 'HALOL', 'FLUX': 'HALOL', 'REQ': 'HALOL', 'ETC': 'HALOL', 'DOGE': 'HALOL', 'IOST': 'HALOL', 'ENS': 'HALOL', 'AVAX': 'HALOL', 'MINA': 'HALOL', 'MATIC': 'HALOL', 'OP': 'HALOL', 'SKL': 'HALOL', 'FET': 'HALOL', 'ADA': 'HALOL', 'HOT': 'HALOL', 'ACH': 'HALOL', 'BAT': 'HALOL', 'MOVR': 'HALOL', 'CTK': 'HALOL', 'VET': 'HALOL', 'STX': 'HALOL', 'KSM': 'HALOL', 'ICP': 'HALOL', 'THETA': 'HALOL', 'DOT': 'HALOL', 'BLZ': 'HALOL', 'IRIS': 'HALOL', 'AR': 'HALOL', 'PHB': 'HALOL', 'DGB': 'HALOL', 'APT': 'HALOL', 'XEM': 'HALOL', 'ZEC': 'HALOL', 'ANT': 'HALOL', 'GLMR': 'HALOL', 'MANA': 'HALOL', 'MASK': 'HALOL', 'TOMO': 'HALOL', 'LTO': 'HALOL', 'AGIX': 'HALOL', 'DATA': 'HALOL', 'JASMY': 'HALOL', 'KLAY': 'HALOL', 'BCH': 'HALOL', 'FIL': 'HALOL', 'LINK': 'HALOL', 'FIO': 'HALOL', 'LPT': 'HALOL', 'RVN': 'HALOL', 'CTXC': 'HALOL', 'IOTA': 'HALOL', 'STORJ': 'HALOL', 'GTC': 'HALOL', 'AVA': 'HALOL', 'MDT': 'HALOL', 'NEAR': 'HALOL', 'VIDT': 'HALOL', 'CHR': 'HALOL', 'FLOW': 'HALOL', 'SYS': 'HALOL', 'COS': 'HALOL', 'DASH': 'HALOL', 'NULS': 'HALOL', 'TRX': 'HALOL', 'TWT': 'HALOL', 'LTC': 'HALOL', 'QTUM': 'HALOL', 'CTSI': 'HALOL', 'GRT': 'HALOL', 'SCRT': 'HALOL', 'DUSK': 'HALOL', 'EOS': 'HALOL', 'DCR': 'HALOL', 'OXT': 'HALOL', 'NKN': 'HALOL', 'GMT': 'HALOL', 'WTC': 'HALOL', 'ARPA': 'HALOL', 'HBAR': 'HALOL', 'PUNDIX': 'HALOL', 'TFUEL': 'HALOL', 'SXP': 'HALOL', 'XMR': 'HALOL', 'ALGO': 'HALOL', 'BICO': 'HALOL', 'CKB': 'HALOL', 'SFP': 'HALOL', 'TVK': 'HALOL', 'PAXG': 'HALOL', 'OMG': 'HALOL', 'ARDR': 'HALOL', 'POWR': 'HALOL', 'ATA': 'HALOL', 'DREP': 'HALOL', 'XLM': 'HALOL', 'XEC': 'HALOL', 'GAS': 'HALOL', 'FIRO': 'HALOL', 'LOOM': 'HALOL', 'QKC': 'HALOL', 'RARE': 'HALOL', 'CHZ': 'HALOL', 'ONG': 'HALOL', 'PROM': 'HALOL', 'XRP': 'HALOL', 'GLM': 'HALOL', 'RLC': 'HALOL', 'VTHO': 'HALOL', 'DOCK': 'HALOL', 'HIVE': 'HALOL', 'AMP': 'HALOL', 'BAND': 'HALOL', 'ZIL': 'HALOL', 'STMX': 'HALOL', 'MTL': 'HALOL', 'KMD': 'HALOL', 'ABBC': 'HALOL', 'ADX': 'HALOL', 'AERGO': 'HALOL', 'AIOZ': 'HALOL', 'AKT': 'HALOL', 'ALEPH': 'HALOL', 'ALT': 'HALOL', 'AOG': 'HALOL', 'APL': 'HALOL', 'ARRR': 'HALOL', 'AURORA': 'HALOL', 'BFC': 'HALOL', 'BLUR': 'HALOL', 'BUSD': 'HALOL', 'CARD': 'HALOL', 'CERE': 'HALOL', 'CQT': 'HALOL', 'CRPT': 'HALOL', 'CSPR': 'HALOL', 'DAG': 'HALOL', 'DERO': 'HALOL', 'DFA': 'HALOL', 'DIVI': 'HALOL', 'DPR': 'HALOL', 'DVPN': 'HALOL', 'EDG': 'HALOL', 'EGLD': 'HALOL', 'EWT': 'HALOL', 'GOM2': 'HALOL', 'GRIN': 'HALOL', 'GST': 'HALOL', 'HAI': 'HALOL', 'HAPI': 'HALOL', 'HNT': 'HALOL', 'HTR': 'HALOL', 'HYDRA': 'HALOL', 'IOTX': 'HALOL', 'KAI': 'HALOL', 'KDA': 'HALOL', 'KLV': 'HALOL', 'KOK': 'HALOL', 'KRL': 'HALOL', 'LITH': 'HALOL', 'LOCUS': 'HALOL', 'LYXE': 'HALOL', 'MAP': 'HALOL', 'METIS': 'HALOL', 'MITX': 'HALOL', 'MLK': 'HALOL', 'MNW': 'HALOL', 'MOOV': 'HALOL', 'MXC': 'HALOL', 'NIM': 'HALOL', 'NOIA': 'HALOL', 'NWC': 'HALOL', 'ORAI': 'HALOL', 'ORBS': 'HALOL', 'ORC': 'HALOL', 'PLU': 'HALOL', 'PRE': 'HALOL', 'PRQ': 'HALOL', 'PUSH': 'HALOL', 'QNT': 'HALOL', 'REAP': 'HALOL', 'REV.3L': 'HALOL', 'RLY': 'HALOL', 'RMRK': 'HALOL', 'RNDR': 'HALOL', 'SHR': 'HALOL', 'SOLVE': 'HALOL', 'SOUL': 'HALOL', 'STC': 'HALOL', 'STRAX': 'HALOL', 'SUTER': 'HALOL', 'SWASH': 'HALOL', 'SYLO': 'HALOL', 'TEL': 'HALOL', 'TIME': 'HALOL', 'TLOS': 'HALOL', 'TONE': 'HALOL', 'TON': 'HALOL', 'TRAC': 'HALOL', 'TRIAS': 'HALOL', 'USDC': 'HALOL', 'USDP': 'HALOL', 'VID': 'HALOL', 'VLX': 'HALOL', 'VRA': 'HALOL', 'VSYS': 'HALOL', 'WHALE': 'HALOL', 'WOM': 'HALOL', 'XCH': 'HALOL', 'XCN': 'HALOL', 'XDC': 'HALOL', 'XNO': 'HALOL', 'XPR': 'HALOL', 'XYM': 'HALOL', 'XYO': 'HALOL', 'ZEN': 'HALOL', 'AQT': 'HALOL', 'ARA': 'HALOL', 'ARK': 'HALOL', 'ARV': 'HALOL', 'BEAM': 'HALOL', 'BLY': 'HALOL', 'BORA': 'HALOL', 'BSV': 'HALOL', 'BTM': 'HALOL', 'CRT': 'HALOL', 'DKA': 'HALOL', 'DMD': 'HALOL', 'DORA': 'HALOL', 'ELF': 'HALOL', 'EL': 'HALOL', 'HC': 'HALOL', 'HERO': 'HALOL', 'HEZ': 'HALOL', 'HIBS': 'HALOL', 'ICHI': 'HALOL', 'IQ': 'HALOL', 'KIN': 'HALOL', 'LN': 'HALOL', 'MAPS': 'HALOL', 'MATH': 'HALOL', 'META': 'HALOL', 'MLT': 'HALOL', 'MSB': 'HALOL', 'MTA': 'HALOL', 'MVL': 'HALOL', 'NAS': 'HALOL', 'NAV': 'HALOL', 'NEBL': 'HALOL', 'NEST': 'HALOL', 'PAC': 'HALOL', 'PNK': 'HALOL', 'RAE': 'HALOL', 'RARI': 'HALOL', 'RAZOR': 'HALOL', 'SAFE': 'HALOL', 'SBR': 'HALOL', 'SC': 'HALOL', 'SDN': 'HALOL', 'SERO': 'HALOL', 'SNT': 'HALOL', 'STARS': 'HALOL', 'STEEM': 'HALOL', 'TMTG': 'HALOL', 'TORN': 'HALOL', 'TPT': 'HALOL', 'TUSD': 'HALOL', 'UPI': 'HALOL', '': 'HALOL', 'WNT': 'HALOL', 'XAUT': 'HALOL', 'XEP': 'HALOL', 'XPX': 'HALOL', 'XVG': 'HALOL', 'ZIG': 'HALOL', 'APM': 'HALOL', 'BCD': 'HALOL', 'CVC': 'HALOL', 'INT': 'HALOL', 'LSK': 'HALOL', 'MITH': 'HALOL'}
 chanel_add_session = {}
@@ -32,8 +32,11 @@ crypto_add_session = {}
 crypto_delete_session = {}
 user_reload_messages = {}
 send_message_session = {}
+send_message_premium_session = {}
 inline_keyboard_session = {}
+inline_keyboard_premium_session = {}
 add_inline_keyboard_session = {}
+add_inline_keyboard_premium_session = {}
 logging.basicConfig(level=logging.INFO)
 admin_userIds = {1052097431: "𝙺𝚘𝚖𝚛𝚘𝚗", 1885498684: "AZIZBEK"}
 today = datetime.now().date()
@@ -46,6 +49,7 @@ channel_usernames = []
 sended_users = []
 unsended_users = []
 last_response_time = {}
+accessed_users = []
 
 try:
     with open('all_users.json', 'r') as file:
@@ -250,6 +254,7 @@ async def cmd_start_admin(message: types.Message):
                     types.KeyboardButton(text="Malumotlar boshqaruvi 📂"),
                     types.KeyboardButton(text="Malumot turlari 🔀")
                 ],
+                [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                 [types.KeyboardButton(text="Admin boshqaruvi 👤")],
                 [types.KeyboardButton(text="Orqaga qaytish 🔙")],
             ]
@@ -321,10 +326,16 @@ async def handle_message(message: types.Message):
             reklamBuilder = InlineKeyboardBuilder()
             if user_id in send_message_session:
                 del send_message_session[user_id]
+            if user_id in send_message_premium_session:
+                del send_message_premium_session[user_id]
             if user_id in add_inline_keyboard_session:
                 del add_inline_keyboard_session[user_id]
             if user_id in inline_keyboard_session:
                 del inline_keyboard_session[user_id]
+            if user_id in add_inline_keyboard_premium_session:
+                del add_inline_keyboard_premium_session[user_id]
+            if user_id in inline_keyboard_premium_session:
+                del inline_keyboard_premium_session[user_id]
             if user_id in crypto_control_session:
                 del crypto_control_session[user_id]
             if user_id in crypto_add_session:
@@ -360,6 +371,7 @@ async def handle_message(message: types.Message):
                         types.KeyboardButton(text="Malumotlar boshqaruvi 📂"),
                         types.KeyboardButton(text="Malumot turlari 🔀")
                     ],
+                    [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                     [types.KeyboardButton(text="Admin boshqaruvi 👤")],
                     [types.KeyboardButton(text="Orqaga qaytish 🔙")],
                 ]
@@ -445,6 +457,7 @@ async def handle_message(message: types.Message):
                             types.KeyboardButton(text="Malumotlar boshqaruvi 📂"),
                             types.KeyboardButton(text="Malumot turlari 🔀")
                         ],
+                        [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                         [types.KeyboardButton(text="Admin boshqaruvi 👤")],
                         [types.KeyboardButton(text="Orqaga qaytish 🔙")],
                     ]
@@ -500,8 +513,126 @@ async def handle_message(message: types.Message):
                 await message.answer(
                     "Xabaringiz to'g'rimi? Agarda to'g'ri bo'lsa \"Yuborish ✅\" tugmasini bosing aks holda \"Bekor qilish ❌\"ni bosing",
                     reply_markup=keyboard)
+        elif user_id in inline_keyboard_premium_session:
+            if user_message == "Qo'shish ✅":
+                add_inline_keyboard_premium_session[user_id] = True
+                kb = [
+                    [
+                        types.KeyboardButton(text="Bekor qilish ❌"),
+                    ]
+                ]
+                keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+                await message.answer(
+                    "Kanal nomi*Kanal sslikasi\nKanal nomi*Kanal sslikasi\n...\n\nIltimos shu ko`rinishda kiriting",
+                    reply_markup=keyboard)
+            elif user_message == "Tashlab o'tish ❌":
+                if isinstance(reklam, types.Message) and reklam.video:
+                    video = reklam.video
+                    caption = reklam.caption
+
+                    await bot.send_video(
+                        chat_id=user_id,
+                        video=video.file_id,
+                        caption=caption,
+                        disable_notification=True,
+                        reply_markup=reklamBuilder.as_markup(),
+                        parse_mode="HTML"
+                    )
+                elif isinstance(reklam, types.Message):
+                    await bot.copy_message(
+                        chat_id=user_id,
+                        from_chat_id=reklam.chat.id,
+                        message_id=reklam.message_id,
+                        reply_markup=reklamBuilder.as_markup(),
+                        parse_mode="HTML"
+                    )
+                kb = [
+                    [
+                        types.KeyboardButton(text="Yuborish ✅"),
+                        types.KeyboardButton(text="Bekor qilish ❌"),
+                    ]
+                ]
+                keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+                await message.answer(
+                    "Xabaringiz to'g'rimi? Agarda to'g'ri bo'lsa \"Yuborish ✅\" tugmasini bosing aks holda \"Bekor qilish ❌\"ni bosing",
+                    reply_markup=keyboard)
+            elif user_message == "Yuborish ✅":
+                if user_id in ownerId:
+                    owner_sessions[user_id] = True
+                    del inline_keyboard_premium_session[user_id]
+                    kb = [
+                        [
+                            types.KeyboardButton(text="Xabar yuborish ✉️"),
+                            types.KeyboardButton(text="Statistika 📊")
+                        ],
+                        [
+                            types.KeyboardButton(text="Crypto qo'shish ➕"),
+                            types.KeyboardButton(text="Kanal qo'shish ➕")
+                        ],
+                        [
+                            types.KeyboardButton(text="Malumotlar boshqaruvi 📂"),
+                            types.KeyboardButton(text="Malumot turlari 🔀")
+                        ],
+                        [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
+                        [types.KeyboardButton(text="Admin boshqaruvi 👤")],
+                        [types.KeyboardButton(text="Orqaga qaytish 🔙")],
+                    ]
+                    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+                    await message.answer(f"Admin panelga xush kelibsiz. Menuni tanlang!", reply_markup=keyboard)
+                elif user_id in admin_userIds.keys():
+                    kb = [
+                        [
+                            types.KeyboardButton(text="Xabar yuborish ✉️"),
+                            types.KeyboardButton(text="Statistika 📊")
+                        ],
+                        [types.KeyboardButton(text="Kanal qo'shish ➕")],
+                        [types.KeyboardButton(text="Orqaga qaytish 🔙")],
+                    ]
+                    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+                    await message.answer(f"Admin panelga xush kelibsiz. Menuni tanlang!", reply_markup=keyboard)
+                del send_message_premium_session[message.from_user.id]
+                await send_message_premium_controller(message)
+            elif user_id in add_inline_keyboard_premium_session:
+                keyboards = user_message.split("\n")
+                for keyboard in keyboards:
+                    name = keyboard.split("*")[0]
+                    url = keyboard.split("*")[1]
+                    reklamBuilder.add(types.InlineKeyboardButton(text=f"{name}", url=f"{url}"))
+                    reklamBuilder.adjust(1, 1)
+                if isinstance(reklam, types.Message) and reklam.video:
+                    video = reklam.video
+                    caption = reklam.caption
+
+                    await bot.send_video(
+                        chat_id=user_id,
+                        video=video.file_id,
+                        caption=caption,
+                        disable_notification=True,
+                        reply_markup=reklamBuilder.as_markup(),
+                        parse_mode="HTML"
+                    )
+                elif isinstance(reklam, types.Message):
+                    await bot.copy_message(
+                        chat_id=user_id,
+                        from_chat_id=reklam.chat.id,
+                        message_id=reklam.message_id,
+                        reply_markup=reklamBuilder.as_markup(),
+                        parse_mode="HTML"
+                    )
+                kb = [
+                    [
+                        types.KeyboardButton(text="Yuborish ✅"),
+                        types.KeyboardButton(text="Bekor qilish ❌"),
+                    ]
+                ]
+                keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+                await message.answer(
+                    "Xabaringiz to'g'rimi? Agarda to'g'ri bo'lsa \"Yuborish ✅\" tugmasini bosing aks holda \"Bekor qilish ❌\"ni bosing",
+                    reply_markup=keyboard)
         elif user_id in send_message_session:
             await send_message_service(message)
+        elif user_id in send_message_premium_session:
+            await send_message_premiuim_service(message)
         elif user_id in crypto_control_session:
             await crypto_control_session_service(message)
         elif user_id in chanel_control_session:
@@ -552,6 +683,8 @@ async def handle_message(message: types.Message):
             await vip_haqida_service(message)
         if user_message == "Bepul skalping signallar 📈":
             if len(user_referals.get(user_id, [])) >= 10:
+                if user_id not in accessed_users:
+                    accessed_users[user_id] = True
                 await trading_haqida_qisqa_vidyolar_service(message)
             else:
                 referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
@@ -796,6 +929,13 @@ async def admin_sessions_service(message: types.Message):
         ]
         keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
         await message.answer(f"Marhamat xabaringizni yuborishingiz mumkin", reply_markup=keyboard)
+    if user_message == "Premium xabar yuborish ✉️":
+        send_message_premium_session[user_id] = True
+        kb = [
+            [types.KeyboardButton(text="Orqaga qaytish  🔙")]
+        ]
+        keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+        await message.answer(f"Marhamat xabaringizni yuborishingiz mumkin", reply_markup=keyboard)
     if user_message == "Admin boshqaruvi 👤" and user_id in ownerId:
         admin_control_session[user_id] = True
         kb = [
@@ -886,6 +1026,32 @@ async def send_message_service(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
     await message.answer("Xabaringiz saqlandi. Xabar tagiga keyboard reklama qo'shasizmi?", reply_markup=keyboard)
     inline_keyboard_session[message.from_user.id] = True
+
+async def send_message_premiuim_service(message: types.Message):
+    global reklam
+    reklam = message
+    kb = [
+        [
+            types.KeyboardButton(text="Qo'shish ✅"),
+            types.KeyboardButton(text="Tashlab o'tish ❌"),
+        ]
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+    await message.answer("Xabaringiz saqlandi. Xabar tagiga keyboard reklama qo'shasizmi?", reply_markup=keyboard)
+    inline_keyboard_premium_session[message.from_user.id] = True
+
+async def send_message_premium_service(message: types.Message):
+    global reklam
+    reklam = message
+    kb = [
+        [
+            types.KeyboardButton(text="Qo'shish ✅"),
+            types.KeyboardButton(text="Tashlab o'tish ❌"),
+        ]
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
+    await message.answer("Xabaringiz saqlandi. Xabar tagiga keyboard reklama qo'shasizmi?", reply_markup=keyboard)
+    inline_keyboard_premium_session[message.from_user.id] = True
 
 async def send_message_chunks(chat_id, text):
     max_message_length = 4096
@@ -1022,6 +1188,31 @@ async def send_message_controller(message: types.Message):
         caption = reklam.caption
 
         for user_id in all_users:
+            counter += 1
+            if reklam.video:
+                await send_video_message(user_id, video, caption, counter)
+            else:
+                await send_copy_message(user_id, counter, reklam)
+
+    end_time = datetime.now()
+    execution_time = end_time - start_time
+    total_seconds = execution_time.total_seconds()
+    minutes, seconds = divmod(total_seconds, 60)
+    time_string = f"{int(minutes)} daqiqa {int(seconds)} sekund vaqt oralig'ida yuborildi."
+
+    await message.answer(
+        f"Xabaringiz yuborildi ✅\n\nYuborilmaganlar soni: {len(unsended_users)}\nYuborilganlar soni: {len(sended_users)}\n{time_string}"
+    )
+
+async def send_message_premium_controller(message: types.Message):
+    global reklam
+    start_time = datetime.now()
+    counter = 0
+    if isinstance(reklam, types.Message):
+        video = reklam.video
+        caption = reklam.caption
+
+        for user_id in accessed_users:
             counter += 1
             if reklam.video:
                 await send_video_message(user_id, video, caption, counter)
