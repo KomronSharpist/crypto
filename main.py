@@ -682,7 +682,7 @@ async def handle_message(message: types.Message):
         if user_message == "VIPKANAL  Haqida 💎":
             await vip_haqida_service(message)
         if user_message == "Bepul skalping signallar 📈":
-            count = len(user_referals["1052097431"])
+            count = len(user_referals[user_id])
             if count >= 10:
                 if user_id not in accessed_users:
                     accessed_users[user_id] = True
@@ -696,7 +696,7 @@ async def handle_message(message: types.Message):
             referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
             await message.answer(f"Sizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
         if user_message == "Taklif qilingan do'stlar 📈":
-            count = len(user_referals["1052097431"])
+            count = len(user_referals[user_id])
             await message.answer(f"Siz taklif qilgan do'stlar soni: {count}")
 
 
