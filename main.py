@@ -682,11 +682,12 @@ async def handle_message(message: types.Message):
         if user_message == "VIPKANAL  Haqida 💎":
             await vip_haqida_service(message)
         if user_message == "Bepul skalping signallar 📈":
-            count = len(user_referals[user_id])
-            if count >= 10:
-                if user_id not in accessed_users:
-                    accessed_users[user_id] = True
-                await trading_haqida_qisqa_vidyolar_service(message)
+            if user_id in user_referals:
+                count = len(user_referals[user_id])
+                if count >= 10:
+                    if user_id not in accessed_users:
+                        accessed_users[user_id] = True
+                    await trading_haqida_qisqa_vidyolar_service(message)
             else:
                 referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
                 await message.answer(f"Bu bo'limni ochish uchun siz 10 do'stingizni taklif qilishingiz kerak!\n\nSizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
@@ -696,8 +697,11 @@ async def handle_message(message: types.Message):
             referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
             await message.answer(f"Sizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
         if user_message == "Taklif qilingan do'stlar 📈":
-            count = len(user_referals[user_id])
-            await message.answer(f"Siz taklif qilgan do'stlar soni: {count}")
+            if user_id in user_referals:
+                count = len(user_referals[user_id])
+                await message.answer(f"Siz taklif qilgan do'stlar soni: {count}")
+            else :
+                await message.answer(f"Siz taklif qilgan do'stlar soni: 0")
 
 
 async def crypto_check(message: types.Message):
