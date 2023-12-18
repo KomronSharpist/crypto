@@ -19,6 +19,7 @@ chanel_add_session = {}
 chanel_control_session = {}
 crypto_check_session = {}
 admin_control_session = {}
+premium_user_add_session = {}
 data_control_session = {}
 admin_add_session = {}
 admin_sessions = {}
@@ -49,7 +50,7 @@ channel_usernames = []
 sended_users = []
 unsended_users = []
 last_response_time = {}
-accessed_users = {}
+
 
 try:
     with open('all_users.json', 'r') as file:
@@ -94,6 +95,14 @@ try:
         user_referals = json.load(file)
 except FileNotFoundError:
     user_referals = {}
+
+
+
+try:
+    with open('accessed_users.json', 'r') as file:
+        accessed_users = json.load(file)
+except FileNotFoundError:
+    accessed_users = {}
 
 
 async def is_subscribed(user_id, channel_username):
@@ -256,6 +265,7 @@ async def cmd_start_admin(message: types.Message):
                 ],
                 [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                 [types.KeyboardButton(text="Admin boshqaruvi 👤")],
+                [types.KeyboardButton(text="Premium qoshish ➕")],
                 [types.KeyboardButton(text="Orqaga qaytish 🔙")],
             ]
             keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
@@ -373,6 +383,7 @@ async def handle_message(message: types.Message):
                     ],
                     [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                     [types.KeyboardButton(text="Admin boshqaruvi 👤")],
+                    [types.KeyboardButton(text="Premium qoshish ➕")],
                     [types.KeyboardButton(text="Orqaga qaytish 🔙")],
                 ]
                 keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
@@ -389,6 +400,12 @@ async def handle_message(message: types.Message):
                 await message.answer(f"Admin panelga xush kelibsiz. Menuni tanlang!", reply_markup=keyboard)
         elif user_id in admin_control_session:
             await admin_control_session_service(message)
+        elif user_id in premium_user_add_session:
+            accessed_users[user_message] = True
+            with open('accessed_users.json', 'w') as file:
+                json.dump(accessed_users, file)
+            await message.answer(f"Qoshildi.")
+            del premium_user_add_session[user_id]
         elif user_id in data_add_session:
             await data_add_service(message)
         elif user_id in data_delete_session:
@@ -459,6 +476,7 @@ async def handle_message(message: types.Message):
                         ],
                         [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                         [types.KeyboardButton(text="Admin boshqaruvi 👤")],
+                        [types.KeyboardButton(text="Premium qoshish ➕")],
                         [types.KeyboardButton(text="Orqaga qaytish 🔙")],
                     ]
                     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
@@ -575,6 +593,7 @@ async def handle_message(message: types.Message):
                         ],
                         [types.KeyboardButton(text="Premium xabar yuborish ✉️")],
                         [types.KeyboardButton(text="Admin boshqaruvi 👤")],
+                        [types.KeyboardButton(text="Premium qoshish ➕")],
                         [types.KeyboardButton(text="Orqaga qaytish 🔙")],
                     ]
                     keyboard = types.ReplyKeyboardMarkup(keyboard=kb, resize_keyboard=True)
@@ -687,7 +706,11 @@ async def handle_message(message: types.Message):
                 if count >= 10:
                     if user_id not in accessed_users:
                         accessed_users[user_id] = True
+                        with open('accessed_users.json', 'w') as file:
+                            json.dump(accessed_users, file)
                     await trading_haqida_qisqa_vidyolar_service(message)
+            elif str(user_id) in accessed_users:
+                await trading_haqida_qisqa_vidyolar_service(message)
             else:
                 referral_link = f'https://t.me/Afrosiyob_trading_bot?start={user_id}'
                 await message.answer(f"Bu bo'limni ochish uchun siz 10 do'stingizni taklif qilishingiz kerak!\n\nSizning referal linkiz: \n{referral_link}\n\n Do'stlaringizni taklif qilish uchun ularga jonating.!")
@@ -955,6 +978,9 @@ async def admin_sessions_service(message: types.Message):
         await message.answer(
             "Admin boshqaruvi 👤",
             reply_markup=keyboard)
+    if user_message == "Premium qoshish ➕":
+        premium_user_add_session[user_id] = True
+        await message.answer("Qoshmoqchi bolgan odamingizni id sini jonating.")
     if user_message == "Malumotlar boshqaruvi 📂":
         data_control_session[user_id] = True
         kb = [
